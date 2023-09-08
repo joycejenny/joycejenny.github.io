@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            padding: 4rem;
+            gap: 1rem;
+        }
+        img{
+            width: 300px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 data-testid="Jenny_Joyce">Joyce Eniola Adedeji</h2>
+        <img src="joyce.jpg" alt="Jenny_Joyce" data-testid="slack-dp">
+        <p data-testid="currentDayOfTheWeek"></p>
+        <p data-testid="currentWATTime"></p>
+        <p data-testid="Frontend"></p>
+        <a href="#" data-testid="githubURL">My Github repo</a>
+    </div>
+    <script>
+        const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const currentDay = new Date();
+        const dayOfTheWeek = daysOfTheWeek[currentDay.getDay()];
+        document.querySelector('[data-testid = "currentDayOfTheWeek"]').textContent = dayOfTheWeek;
+        function getCurrentWATTime(){
+            const utcTime = new Date();
+            const watTime = new Date(utcTime.getTime() );
+            return watTime.toLocaleTimeString("en-Us", {
+                timeZoneName: "short", timeZone: "Africa/Lagos"
+            });
+        }
+        document.querySelector('[data-testid="currentWATTime"]').textContent = getCurrentWATTime();        
+    </script>
+</body>
+</html>
